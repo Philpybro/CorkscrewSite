@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 
+const basePath = "/CorkscrewSite";
+
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -16,7 +18,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Corkscrew - The Ultimate Momentum-Based Adventure",
   description:
-    "Corkscrew is a momentum-based 2D platformer set in Rural Britain, 2019. Play as Charlie, a young lad who can turn into a monster, as he battles the psycho kid J to save his cash and his homeland!",
+    "Corkscrew is a Cornish momentum-based 2D platformer set in 2019. Play as Charlie, a cool kid with an even cooler power up, as he battles the psychotic Jam to save the world, and more importantly, his money!",
   keywords: [
     "Corkscrew",
     "platformer",
@@ -28,14 +30,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "CharlieDoesStuff" }],
   icons: {
-    icon: "/images/corkscrew/logo.jpg",
+    icon: `${basePath}/images/corkscrew/logo.png`,
   },
   openGraph: {
     title: "Corkscrew - The Ultimate Momentum-Based Adventure",
     description:
       "A momentum-based 2D platformer set in Rural Britain. Randomly generated levels, HD artstyle, and crass humour await!",
     type: "website",
-    images: ["/images/corkscrew/library.jpg"],
+    images: [`${basePath}/images/corkscrew/library.jpg`],
   },
 };
 

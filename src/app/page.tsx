@@ -21,6 +21,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+const BASE_PATH = "/CorkscrewSite";
+const withBasePath = (path: string) => `${BASE_PATH}${path}`;
+
 /* ═══════════════════════════════════════════
    DATA
    ═══════════════════════════════════════════ */
@@ -47,6 +50,7 @@ interface Character {
   icon: LucideIcon;
   traits: string[];
   iconColor: string;
+  portraitSrc: string;
 }
 
 const CHARACTERS: Character[] = [
@@ -54,7 +58,7 @@ const CHARACTERS: Character[] = [
     name: "Charlie",
     role: "Main Character",
     description:
-      "A 10-year-old Cornish lad with a love for money and adventure. Charlie can transform into a monster-like state — fast, agile, and built for speed. He builds insane momentum through wild stunts and uses bits of tech he \"invents\". He's the class clown: snarky, meme-loving, and always ready for a scrap.",
+      "A Cornish kid with a love for money, Charlie has a mostrous power up. He's fast, agile, and built for speed. He builds insane momentum through wild stunts and uses bits of tech he \"invents\". He's the class clown: snarky, meme-loving, and always ready for a scrap.",
     colorClass: "char-charlie",
     gradientFrom: "from-cyan-500",
     gradientTo: "to-emerald-400",
@@ -62,6 +66,7 @@ const CHARACTERS: Character[] = [
     icon: Zap,
     iconColor: "text-cyan-400",
     traits: ["Fast & Agile", "Tech-Enthusiast", "Monster Form", "Momentum Master"],
+    portraitSrc: "/images/corkscrew/Charlie.png",
   },
   {
     name: "Zak",
@@ -75,6 +80,7 @@ const CHARACTERS: Character[] = [
     icon: Star,
     iconColor: "text-yellow-400",
     traits: ["British Cowboy", "Military Buff", "Loyal Friend", "French Origins"],
+    portraitSrc: "/images/corkscrew/Zak.png",
   },
   {
     name: "Jam",
@@ -89,13 +95,14 @@ const CHARACTERS: Character[] = [
     icon: Skull,
     iconColor: "text-pink-400",
     traits: ["Evil Genius", "Robot Builder", "Ghost Mask", "World Domination"],
+    portraitSrc: "/images/corkscrew/Jam.png",
   },
   {
-    name: "CHAR-0",
+    name: "The Robot",
     nickname: '"Zero"',
     role: "Secondary Antagonist / Boss",
     description:
-      "Jam's failed robot, originally designed as a Charlie doppelganger. Rebuilt into an autonomous beast, Zero later absorbs Zak during a Metal Sonic-inspired boss fight — setting up one of the game's most intense confrontations.",
+      "Jam's failed project, originally designed as a Charlie doppelganger. Rebuilt into an autonomous beast, Zero later absorbs Zak during a Metal Sonic-inspired boss fight — setting up one of the game's most intense confrontations.",
     colorClass: "char-zero",
     gradientFrom: "from-red-500",
     gradientTo: "to-orange-500",
@@ -103,6 +110,7 @@ const CHARACTERS: Character[] = [
     icon: Gamepad2,
     iconColor: "text-red-400",
     traits: ["Mechanical Beast", "Charlie Clone", "Autonomous", "Final Boss Form"],
+    portraitSrc: "/images/corkscrew/Robot.png",
   },
 ];
 
@@ -337,7 +345,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-4xl">
           <div className="mb-8">
             <img
-              src="/images/corkscrew/logo.jpg"
+              src={withBasePath("/images/corkscrew/logo.jpg")}
               alt="Corkscrew Logo"
               className="mx-auto max-w-md w-full rounded-2xl shadow-[0_0_40px_rgba(0,212,255,0.4),0_0_80px_rgba(255,45,149,0.2)] border-2 border-white/20"
             />
@@ -417,9 +425,24 @@ export default function HomePage() {
             </div>
 
             <div className="relative">
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {CHARACTERS.map((char) => (
+                  <div key={char.name} className="glass-card overflow-hidden rounded-3xl p-3 text-center">
+                    <img
+                      src={withBasePath(char.portraitSrc)}
+                      alt={`${char.name} portrait`}
+                      className="w-full h-auto rounded-3xl object-cover"
+                    />
+                    <div className="mt-3">
+                      <p className="text-white font-semibold">{char.name}</p>
+                      <p className="text-xs text-white/60">{char.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
               <div className="glass-card overflow-hidden rounded-2xl">
                 <img
-                  src="/images/corkscrew/ss1.jpg"
+                  src={withBasePath("/images/corkscrew/ss1.jpg")}
                   alt="Corkscrew Gameplay"
                   className="w-full h-auto"
                 />
@@ -500,7 +523,7 @@ export default function HomePage() {
               {["/images/corkscrew/ss1.jpg", "/images/corkscrew/ss2.jpg", "/images/corkscrew/ss3.jpg"].map((src, i) => (
                 <div key={i} className="glass-card overflow-hidden rounded-2xl group cursor-pointer">
                   <div className="relative overflow-hidden">
-                    <img src={src} alt={`Corkscrew Screenshot ${i + 1}`} className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
+                    <img src={withBasePath(src)} alt={`Corkscrew Screenshot ${i + 1}`} className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </div>
@@ -508,7 +531,7 @@ export default function HomePage() {
             </div>
             <div className="flex justify-center">
               <div className="glass-card overflow-hidden rounded-2xl max-w-md w-full group cursor-pointer">
-                <img src="/images/corkscrew/library.jpg" alt="Corkscrew Library Card" className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
+                  <img src={withBasePath("/images/corkscrew/library.jpg")} alt="Corkscrew Library Card" className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
               </div>
             </div>
           </div>
