@@ -58,7 +58,7 @@ const CHARACTERS: Character[] = [
     name: "Charlie",
     role: "Main Character",
     description:
-      "A Cornish kid with a love for money, Charlie has a mostrous power up. He's fast, agile, and built for speed. He builds insane momentum through wild stunts and uses bits of tech he \"invents\". He's the class clown: snarky, meme-loving, and always ready for a scrap.",
+      "A Cornish kid with a love for money, Charlie has a mostrous power up. He's fast, agile, and built for speed. He builds insane momentum through wild stunts and uses bits of tech he \"invents\". He's always ready for a scrap.",
     colorClass: "char-charlie",
     gradientFrom: "from-cyan-500",
     gradientTo: "to-emerald-400",
@@ -79,7 +79,7 @@ const CHARACTERS: Character[] = [
     iconBg: "bg-gradient-to-br from-yellow-400/20 to-orange-500/20",
     icon: Star,
     iconColor: "text-yellow-400",
-    traits: ["British Cowboy", "Military Buff", "Loyal Friend", "French Origins"],
+    traits: ["British Cowboy", "Militarily Buff", "Loyal Friend", "French (lmao)"],
     portraitSrc: "/images/corkscrew/Zak.png",
   },
   {
@@ -87,14 +87,14 @@ const CHARACTERS: Character[] = [
     nickname: '"The Psycho Nerd"',
     role: "Main Antagonist",
     description:
-      "A half-orphaned posh psycho-nerd haunted by his dead mafia dad's legacy. He holes up plotting world takeover, fuelled by evil powers and a mysterious cat ghost mask. He builds robots, summons demons, and his school run-ins with Charlie spark their bitter rivalry.",
+      "He holes up plotting world takeover, fuelled by evil powers from a mysterious mask. He builds robots, summons demons, and his school run-ins with Charlie spark their bitter rivalry.",
     colorClass: "char-jam",
     gradientFrom: "from-pink-500",
     gradientTo: "to-purple-600",
     iconBg: "bg-gradient-to-br from-pink-500/20 to-purple-600/20",
     icon: Skull,
     iconColor: "text-pink-400",
-    traits: ["Evil Genius", "Robot Builder", "Ghost Mask", "World Domination"],
+    traits: ["Evil Genius", "Mad Scientist-y", "Screws Loose", "World Domination"],
     portraitSrc: "/images/corkscrew/Jam.png",
   },
   {
@@ -102,7 +102,7 @@ const CHARACTERS: Character[] = [
     nickname: '"Zero"',
     role: "Secondary Antagonist / Boss",
     description:
-      "Jam's failed project, originally designed as a Charlie doppelganger. Rebuilt into an autonomous beast, Zero later absorbs Zak during a Metal Sonic-inspired boss fight — setting up one of the game's most intense confrontations.",
+      "Jam's failed project, originally designed as Charlie's doppelganger and replacement. Rebuilt with the latest technology, he later [SPOILERS] during a boss fight — setting up one of the game's most intense confrontations.",
     colorClass: "char-zero",
     gradientFrom: "from-red-500",
     gradientTo: "to-orange-500",
@@ -151,7 +151,7 @@ const GAME_FEATURES: GameFeature[] = [
     icon: Volume2,
     title: "Crass Humour",
     description:
-      "Expressions and actions will get a giggle or two. #knowingsmile",
+      "Expressions and actions will get a giggle or two.",
     color: "text-yellow-400",
     bgColor: "bg-yellow-500/10",
   },
@@ -183,16 +183,16 @@ interface LevelInfo {
 }
 
 const LEVELS: LevelInfo[] = [
-  { num: 1, name: "Kennoir Forest", description: "An English jungle/forest near alps and hills, sandy during summer. Location of Charlie's house.", icon: TreePine },
-  { num: 2, name: "The Mines", description: "Mines and tunnels. Charlie rides a minecart through dark underground passages.", boss: "The Head — controls minecarts. Break the yellow ones to win!", icon: Mountain },
-  { num: 3, name: "Wilting Field", description: "The fields around where Zak lives, eerie and withered.", icon: Landmark },
-  { num: 4, name: "Desert Outskirts", description: "A scorching desert near a sprawling city.", boss: "Rouge Digger — an out-of-control digging machine.", mini: true, icon: Mountain },
-  { num: 5, name: "Fairground", description: "A countryside fairground filled with rides turned dangerous.", icon: Star },
-  { num: 6, name: "Carnival Street", description: "A small carnival street leading toward danger.", boss: "Evil Snake Man in a Ferris Wheel — rolling towards Charlie!", icon: Building2 },
-  { num: 7, name: "Underwater", description: "An underwater segment with unique swimming mechanics.", icon: Waves },
-  { num: 8, name: "Rural City Entrance", description: "Emerging from the river into the rural entrance of the city.", boss: "CHAR-0 absorbs Zak — a Metal Sonic parody boss fight!", mini: true, icon: Building2 },
-  { num: 9, name: "J-Infected City", description: "Streets of a gang-filled city under Jam's control.", icon: Building2 },
-  { num: 10, name: "Broken Red Sky City", description: "The final zone — a city with a broken red sky.", boss: "FINAL BOSS: J transforms Zak and the robot into a beast, then a racing segment!", icon: Skull },
+  { num: 1, name: "Higher Highs", description: "An English jungle/forest near alps and hills, sandy during summer. Location of Charlie's house.", icon: TreePine },
+  { num: 2, name: "Lower Lows", description: "Mines and tunnels. Charlie rides a minecart through dark underground passages.", boss: "The Head — controls minecarts. Break the yellow ones to win!", icon: Mountain },
+  { num: 3, name: "Wiltering Plains", description: "The fields around where Zak lives, eerie and withered.", icon: Landmark },
+  { num: 4, name: "The Gorge", description: "A scorching desert near a sprawling city.", boss: "Rouge Digger — an out-of-control digging machine.", mini: true, icon: Mountain },
+  { num: 5, name: "Fairground Pt.1: The Arcade", description: "A countryside fairground filled with rides turned dangerous.", icon: Star },
+  { num: 6, name: "Fairground Pt.2: The Carnival", description: "A small carnival street leading toward danger.", boss: "Evil Snake Man in a Ferris Wheel — rolling towards Charlie!", icon: Building2 },
+  { num: 7, name: "Cooky Caverns", description: "An underwater segment with unique swimming mechanics.", icon: Waves },
+  { num: 8, name: "Outskirts", description: "Emerging from the river into the rural entrance of the city.", boss: "CHAR-0 absorbs Zak — a Metal Sonic parody boss fight!", mini: true, icon: Building2 },
+  { num: 9, name: "Urban Brawl", description: "Streets of a gang-filled city under Jam's control.", icon: Building2 },
+  { num: 10, name: "RED SKY", description: "The final zone — a city with a broken red sky.", boss: "FINAL BOSS: J transforms Zak and the robot into a beast, then a racing segment!", icon: Skull },
 ];
 
 interface SocialLink {
@@ -238,9 +238,6 @@ export default function HomePage() {
 
   return (
     <div className="page-wrapper relative">
-      {/* ═══════════ HARD-CODED CSS BACKGROUND EFFECTS ═══════════ */}
-      <BackgroundEffects />
-
       {/* ═══════════ HEADER / NAV ═══════════ */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -326,24 +323,6 @@ export default function HomePage() {
 
       {/* ═══════════ HERO ═══════════ */}
       <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 pb-12 overflow-hidden scanlines">
-        <div className="absolute inset-0 retro-grid opacity-40" />
-
-        {/* Hero Pop Shapes */}
-        <div className="absolute top-28 left-[6%] w-20 h-20 bg-cyan-400 rounded-2xl rotate-12 opacity-40 animate-float-1 shadow-[0_0_30px_rgba(0,212,255,0.3)]" />
-        <div className="absolute top-44 right-[10%] w-16 h-16 bg-pink-500 rounded-full opacity-40 animate-float-2 shadow-[0_0_30px_rgba(255,45,149,0.3)]" />
-        <div className="absolute bottom-[22%] right-[7%] w-28 h-11 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full -rotate-6 opacity-45 animate-float-3 shadow-[0_0_20px_rgba(255,215,0,0.2)]" />
-        <div className="absolute bottom-[32%] left-[7%] w-14 h-14 bg-emerald-400 rounded-lg rotate-45 opacity-40 animate-float-2 shadow-[0_0_20px_rgba(0,255,136,0.2)]" />
-        <div className="absolute top-[55%] left-[12%] w-8 h-24 bg-purple-500 rounded-3xl rotate-6 opacity-30 animate-float-3" />
-        <div className="absolute bottom-[45%] right-[18%] w-10 h-10 bg-red-400 rotate-45 opacity-25 animate-float-1" />
-        {/* swoosh streaks */}
-        <div className="absolute top-[12%] right-[25%] w-44 h-3 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent rounded-full rotate-3 animate-float-2" />
-        <div className="absolute bottom-[38%] right-[22%] w-36 h-3 bg-gradient-to-r from-transparent via-pink-500/30 to-transparent rounded-full -rotate-6 animate-float-1" />
-
-        {/* Frutiger Aero Bubbles (CSS only) */}
-        <div className="aero-bubble absolute w-40 h-40 top-[15%] right-[20%] animate-float-1 opacity-30" />
-        <div className="aero-bubble absolute w-28 h-28 bottom-[30%] left-[5%] animate-float-2 opacity-25" />
-        <div className="aero-bubble absolute w-20 h-20 top-[60%] right-[8%] animate-float-3 opacity-20" />
-        <div className="aero-bubble absolute w-16 h-16 bottom-[15%] right-[35%] animate-float-1 opacity-20" />
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl">
@@ -366,7 +345,7 @@ export default function HomePage() {
           <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
             A funny, fast-paced platformer set in Rural Britain, 2019. Play as
             Charlie — a 10-year-old lad who can turn into a monster — as he
-            battles the psycho kid J to take back his cash and save his homeland!
+            battles the psycho kid Jam to take back his cash and save his homeland!
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
@@ -418,12 +397,7 @@ export default function HomePage() {
               <div className="glass-card p-8">
                 <h3 className="text-xl font-bold text-white mb-4">The World</h3>
                 <p className="text-slate-900/95 leading-relaxed">
-                  The world is pretty much 1:1 with real life — except Charlie
-                  and co are effectively cartoon characters, and there&apos;s
-                  loads of paranormal, magic, and high-tech shenanigans. Being
-                  in such a remote location, every work of fiction is canon to
-                  Corkscrew&apos;s world. Why? Because it&apos;s so far away
-                  that the contradictions don&apos;t matter!
+                  The world is pretty much 1:1 with real life, but just a teency bit more chaotic.
                 </p>
               </div>
             </div>
@@ -435,14 +409,6 @@ export default function HomePage() {
                   alt="Corkscrew Gameplay"
                   className="w-full h-auto"
                 />
-              </div>
-              <div className="absolute -bottom-6 -left-6 glass-panel-dark p-4 rounded-xl max-w-[200px]">
-                <p className="text-xs text-white/60 uppercase tracking-wider mb-1">
-                  In Development Since
-                </p>
-                <p className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">
-                  2018
-                </p>
               </div>
             </div>
           </div>
@@ -568,7 +534,7 @@ export default function HomePage() {
 
       {/* ═══════════ FOOTER ═══════════ */}
       <footer className="py-12 px-4 bg-black/40 backdrop-blur-md border-t border-white/10 mt-auto">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-pink-500 flex items-center justify-center text-white font-black text-sm">
               C
@@ -576,7 +542,7 @@ export default function HomePage() {
             <span className="font-black text-white/60 text-sm tracking-widest uppercase">Corkscrew</span>
           </div>
           <p className="text-white/30 text-sm mb-4 max-w-md mx-auto leading-relaxed">
-            Developed by <span className="text-white/50 font-semibold">CharlieDoesStuff</span>. In development since 2018.
+            Developed by <span className="text-white/50 font-semibold">CharlieDoesStuff</span>.
           </p>
           <p className="text-white/20 text-xs mb-6">
             &copy; Corkscrew 2023–2025. All characters and concepts are copyright of their respective owners.
