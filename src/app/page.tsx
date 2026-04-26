@@ -58,7 +58,7 @@ const CHARACTERS: Character[] = [
     name: "Charlie",
     role: "Main Character",
     description:
-      "A Cornish kid with a love for money, Charlie has a mostrous power up. He's fast, agile, and built for speed. He builds insane momentum through wild stunts and uses bits of tech he \"invents\". He's always ready for a scrap.",
+      "A Cornish kid with a love for money, Charlie has a mostrous power up. He's fast, agile, and built for speed. He builds insane momentum through wild stunts. He's always ready for a scrap.",
     colorClass: "char-charlie",
     gradientFrom: "from-cyan-500",
     gradientTo: "to-emerald-400",
@@ -192,7 +192,7 @@ const LEVELS: LevelInfo[] = [
   { num: 7, name: "Cooky Caverns", description: "An underwater segment with unique swimming mechanics.", icon: Waves },
   { num: 8, name: "Outskirts", description: "Emerging from the river into the rural entrance of the city.", boss: "CHAR-0 absorbs Zak — a Metal Sonic parody boss fight!", mini: true, icon: Building2 },
   { num: 9, name: "Urban Brawl", description: "Streets of a gang-filled city under Jam's control.", icon: Building2 },
-  { num: 10, name: "RED SKY", description: "The final zone — a city with a broken red sky.", boss: "FINAL BOSS: J transforms Zak and the robot into a beast, then a racing segment!", icon: Skull },
+  { num: 10, name: "RED SKY", description: "The final zone — a city with a broken red sky.", boss: "FINAL BOSS: A racing segment, and then [SPOILERS]", icon: Skull },
 ];
 
 interface SocialLink {
