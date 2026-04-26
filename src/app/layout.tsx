@@ -16,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://philpybro.github.io"),
   title: "Corkscrew - The Ultimate Momentum-Based Adventure",
   description:
     "Corkscrew is a Cornish momentum-based 2D platformer set in 2019. Play as Charlie, a cool kid with an even cooler power up, as he battles the psychotic Jam to save the world, and more importantly, his money!",
@@ -48,10 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${outfit.variable} ${inter.variable} antialiased`}
-        style={{ background: "linear-gradient(180deg, #87CEEB 0%, #B0E0F6 30%, #E0F0FF 60%, #D0E8FF 100%)" }}
-      >
+      <body className={`${outfit.variable} ${inter.variable} app-body antialiased`}>
         {children}
       </body>
     </html>

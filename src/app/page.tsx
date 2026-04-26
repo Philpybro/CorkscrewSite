@@ -5,11 +5,13 @@ import {
   ChevronDown,
   Zap,
   Map,
+  Moon,
   Palette,
   Volume2,
   Gamepad2,
   ExternalLink,
   Menu,
+  Sun,
   X,
   Star,
   Skull,
@@ -219,6 +221,11 @@ export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [themeReady, setThemeReady] = useState(false);
+
+  const surfaceCopyClass = theme === "dark" ? "text-white/80" : "text-slate-900/95";
+  const themeToggleLabel = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -236,8 +243,34 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("corkscrew-theme");
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      setTheme(savedTheme);
+    } else {
+      setTheme(systemTheme);
+    }
+
+    setThemeReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!themeReady) {
+      return;
+    }
+
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("corkscrew-theme", theme);
+  }, [theme, themeReady]);
+
   return (
     <div className="page-wrapper relative">
+      <BackgroundEffects />
+
       {/* ═══════════ HEADER / NAV ═══════════ */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -273,15 +306,27 @@ export default function HomePage() {
               ))}
             </nav>
 
-            <a
-              href="https://store.steampowered.com/app/3197700/Corkscrew/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:inline-flex cork-btn-steam cork-btn text-sm py-2 px-5"
-            >
-              <Gamepad2 size={16} />
-              Wishlist on Steam
-            </a>
+            <div className="hidden md:flex items-center gap-3">
+              <button
+                type="button"
+                className="theme-toggle"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label={themeToggleLabel}
+                title={themeToggleLabel}
+              >
+                {themeReady && theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+
+              <a
+                href="https://store.steampowered.com/app/3197700/Corkscrew/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden lg:inline-flex cork-btn-steam cork-btn text-sm py-2 px-5"
+              >
+                <Gamepad2 size={16} />
+                Wishlist on Steam
+              </a>
+            </div>
 
             <button
               className="md:hidden text-white p-2"
@@ -307,11 +352,20 @@ export default function HomePage() {
               </a>
             ))}
             <div className="mt-4 pt-4 border-t border-white/10">
+              <button
+                type="button"
+                className="theme-toggle theme-toggle-mobile w-full justify-center"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                {themeReady && theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                {theme === "dark" ? "Light Mode" : "Dark Mode"}
+              </button>
+
               <a
                 href="https://store.steampowered.com/app/3197700/Corkscrew/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cork-btn cork-btn-steam w-full justify-center text-sm"
+                className="cork-btn cork-btn-steam w-full justify-center text-sm mt-3"
               >
                 <Gamepad2 size={16} />
                 Wishlist on Steam
@@ -325,8 +379,8 @@ export default function HomePage() {
       <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 pb-12 overflow-hidden scanlines">
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-4xl mx-auto">
-          <div className="mb-8">
+        <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
+          <div className="mb-8 w-full flex justify-center">
             <img
               src={withBasePath("/images/corkscrew/logo.png")}
               alt="Corkscrew Logo"
@@ -344,7 +398,7 @@ export default function HomePage() {
 
           <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
             A funny, fast-paced platformer set in Rural Britain, 2019. Play as
-            Charlie — a 10-year-old lad who can turn into a monster — as he
+            Charlie, a cool kid with an even cooler power up, as he
             battles the psycho kid Jam to take back his cash and save his homeland!
           </p>
 
@@ -364,7 +418,7 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="mt-16 animate-bounce">
+          <div className="mt-16 animate-bounce w-full flex justify-center">
             <ChevronDown size={28} className="text-white/40" />
           </div>
         </div>
@@ -372,20 +426,20 @@ export default function HomePage() {
 
       {/* ═══════════ SYNOPSIS ═══════════ */}
       <section id="synopsis" className="relative py-24 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="page-shell">
           <SectionHeader tag="ABOUT THE GAME" title="What is Corkscrew?" subtitle="The only game of its kind." />
 
-          <div className="grid gap-10 xl:grid-cols-2 xl:items-center mt-16">
+          <div className="grid gap-10 justify-items-center xl:grid-cols-2 xl:items-center mt-16">
             <div className="space-y-6 w-full max-w-3xl mx-auto xl:max-w-none">
               <div className="glass-card p-8">
                 <h3 className="text-xl font-bold text-white mb-4">The Story</h3>
-                <p className="text-slate-900/95 leading-relaxed">
+                <p className={`${surfaceCopyClass} leading-relaxed`}>
                   <strong className="text-cyan-400">Corkscrew</strong> sets you
                   in Rural Britain in the year 2019, where you play as a young
                   10-year-old lad whose life is rudely interrupted by a weird kid
                   from his school who&apos;s trying to take over the area.
                 </p>
-                <p className="text-slate-900/95 leading-relaxed mt-4">
+                <p className={`${surfaceCopyClass} leading-relaxed mt-4`}>
                   Getting under the young lad&apos;s skin by taking the one thing
                   he loves most — his{" "}
                   <strong className="text-yellow-400">CASH</strong>! The player
@@ -396,7 +450,7 @@ export default function HomePage() {
 
               <div className="glass-card p-8">
                 <h3 className="text-xl font-bold text-white mb-4">The World</h3>
-                <p className="text-slate-900/95 leading-relaxed">
+                <p className={`${surfaceCopyClass} leading-relaxed`}>
                   The world is pretty much 1:1 with real life, but just a teency bit more chaotic.
                 </p>
               </div>
@@ -418,7 +472,7 @@ export default function HomePage() {
       {/* ═══════════ CHARACTERS ═══════════ */}
       <section id="characters" className="relative py-24 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent" />
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="page-shell relative z-10">
           <SectionHeader tag="MEET THE CAST" title="Characters" subtitle="A ragtag bunch of misfits." />
           <div className="grid md:grid-cols-2 gap-8 mt-16">
             {CHARACTERS.map((char) => (
@@ -430,7 +484,7 @@ export default function HomePage() {
 
       {/* ═══════════ GAMEPLAY ═══════════ */}
       <section id="gameplay" className="relative py-24 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="page-shell">
           <SectionHeader tag="HOW IT PLAYS" title="Gameplay" subtitle="Fast. Funny. Fresh every time." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             {GAME_FEATURES.map((feat) => (
@@ -444,7 +498,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-12 glass-panel-dark p-8 rounded-2xl text-center">
+          <div className="mt-12 glass-panel-dark p-8 rounded-2xl text-center max-w-3xl mx-auto">
             <h3 className="text-xl font-bold text-white mb-3">Plus Even More!</h3>
             <p className="text-white/70 leading-relaxed max-w-2xl mx-auto">
               Minecart levels, rap battles, bouncepads, platform grabbing, an
@@ -458,7 +512,7 @@ export default function HomePage() {
       {/* ═══════════ WORLD / LEVELS ═══════════ */}
       <section id="world" className="relative py-24 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent" />
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="page-shell relative z-10">
           <SectionHeader tag="EXPLORE THE WORLD" title="Levels & Zones" subtitle="From peaceful forests to broken red skies." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
             {LEVELS.map((level) => (
@@ -470,7 +524,7 @@ export default function HomePage() {
 
       {/* ═══════════ MEDIA ═══════════ */}
       <section id="media" className="relative py-24 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="page-shell">
           <SectionHeader tag="SEE IT IN ACTION" title="Media" subtitle="Screenshots from the game." />
           <div className="mt-16 space-y-8">
             <div className="grid md:grid-cols-3 gap-6">
@@ -495,7 +549,7 @@ export default function HomePage() {
       {/* ═══════════ LINKS ═══════════ */}
       <section id="links" className="relative py-24 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent" />
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="page-shell relative z-10">
           <SectionHeader tag="STAY CONNECTED" title="Links" subtitle="Find Corkscrew around the web." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
             {SOCIAL_LINKS.map((link) => (
@@ -533,7 +587,7 @@ export default function HomePage() {
 
       {/* ═══════════ FOOTER ═══════════ */}
       <footer className="py-12 px-4 bg-black/40 backdrop-blur-md border-t border-white/10 mt-auto">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="page-shell text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-pink-500 flex items-center justify-center text-white font-black text-sm">
               C
