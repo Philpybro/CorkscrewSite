@@ -325,10 +325,10 @@ export default function HomePage() {
       <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 pb-12 overflow-hidden scanlines">
 
         {/* Content */}
-        <div className="relative z-10 max-w-4xl">
+        <div className="relative z-10 w-full max-w-4xl mx-auto">
           <div className="mb-8">
             <img
-              src={withBasePath("/images/corkscrew/logo.jpg")}
+              src={withBasePath("/images/corkscrew/logo.png")}
               alt="Corkscrew Logo"
               className="mx-auto max-w-md w-full rounded-2xl shadow-[0_0_40px_rgba(0,212,255,0.4),0_0_80px_rgba(255,45,149,0.2)] border-2 border-white/20"
             />
@@ -372,11 +372,11 @@ export default function HomePage() {
 
       {/* ═══════════ SYNOPSIS ═══════════ */}
       <section id="synopsis" className="relative py-24 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <SectionHeader tag="ABOUT THE GAME" title="What is Corkscrew?" subtitle="The only game of its kind." />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mt-16">
-            <div className="space-y-6">
+          <div className="grid gap-10 xl:grid-cols-2 xl:items-center mt-16">
+            <div className="space-y-6 w-full max-w-3xl mx-auto xl:max-w-none">
               <div className="glass-card p-8">
                 <h3 className="text-xl font-bold text-white mb-4">The Story</h3>
                 <p className="text-slate-900/95 leading-relaxed">
@@ -402,7 +402,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative w-full max-w-3xl mx-auto">
               <div className="glass-card overflow-hidden rounded-2xl">
                 <img
                   src={withBasePath("/images/corkscrew/ss1.jpg")}
@@ -418,7 +418,7 @@ export default function HomePage() {
       {/* ═══════════ CHARACTERS ═══════════ */}
       <section id="characters" className="relative py-24 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent" />
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <SectionHeader tag="MEET THE CAST" title="Characters" subtitle="A ragtag bunch of misfits." />
           <div className="grid md:grid-cols-2 gap-8 mt-16">
             {CHARACTERS.map((char) => (
@@ -430,7 +430,7 @@ export default function HomePage() {
 
       {/* ═══════════ GAMEPLAY ═══════════ */}
       <section id="gameplay" className="relative py-24 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <SectionHeader tag="HOW IT PLAYS" title="Gameplay" subtitle="Fast. Funny. Fresh every time." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             {GAME_FEATURES.map((feat) => (
@@ -448,9 +448,8 @@ export default function HomePage() {
             <h3 className="text-xl font-bold text-white mb-3">Plus Even More!</h3>
             <p className="text-white/70 leading-relaxed max-w-2xl mx-auto">
               Minecart levels, rap battles, bouncepads, platform grabbing, an
-              exhaustion meter, pseudo-3D chase scenes, and even an{" "}
-              <span className="text-yellow-400 font-semibold">OHIO secret level</span>.
-              There&apos;s always something wild around the corner!
+              exhaustion meter, pseudo-3D chase scenes, and plenty of bizarre
+              set pieces. There&apos;s always something wild around the corner!
             </p>
           </div>
         </div>
@@ -459,7 +458,7 @@ export default function HomePage() {
       {/* ═══════════ WORLD / LEVELS ═══════════ */}
       <section id="world" className="relative py-24 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent" />
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <SectionHeader tag="EXPLORE THE WORLD" title="Levels & Zones" subtitle="From peaceful forests to broken red skies." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
             {LEVELS.map((level) => (
@@ -471,7 +470,7 @@ export default function HomePage() {
 
       {/* ═══════════ MEDIA ═══════════ */}
       <section id="media" className="relative py-24 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <SectionHeader tag="SEE IT IN ACTION" title="Media" subtitle="Screenshots from the game." />
           <div className="mt-16 space-y-8">
             <div className="grid md:grid-cols-3 gap-6">
@@ -496,7 +495,7 @@ export default function HomePage() {
       {/* ═══════════ LINKS ═══════════ */}
       <section id="links" className="relative py-24 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent" />
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <SectionHeader tag="STAY CONNECTED" title="Links" subtitle="Find Corkscrew around the web." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
             {SOCIAL_LINKS.map((link) => (
