@@ -252,8 +252,12 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <a href="#hero" className="flex items-center gap-3 shrink-0">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-pink-500 flex items-center justify-center text-white font-black text-lg shadow-lg">
-                C
+              <div className="w-10 h-10 rounded-xl overflow-hidden bg-white/10 shadow-lg">
+                <img
+                  src={withBasePath("/images/corkscrew/icon.png")}
+                  alt="Corkscrew"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="font-black text-white text-lg tracking-wide hidden sm:block">
                 CORKSCREW
@@ -396,13 +400,13 @@ export default function HomePage() {
             <div className="space-y-6">
               <div className="glass-card p-8">
                 <h3 className="text-xl font-bold text-white mb-4">The Story</h3>
-                <p className="text-white/80 leading-relaxed">
+                <p className="text-slate-900/95 leading-relaxed">
                   <strong className="text-cyan-400">Corkscrew</strong> sets you
                   in Rural Britain in the year 2019, where you play as a young
                   10-year-old lad whose life is rudely interrupted by a weird kid
                   from his school who&apos;s trying to take over the area.
                 </p>
-                <p className="text-white/80 leading-relaxed mt-4">
+                <p className="text-slate-900/95 leading-relaxed mt-4">
                   Getting under the young lad&apos;s skin by taking the one thing
                   he loves most — his{" "}
                   <strong className="text-yellow-400">CASH</strong>! The player
@@ -413,7 +417,7 @@ export default function HomePage() {
 
               <div className="glass-card p-8">
                 <h3 className="text-xl font-bold text-white mb-4">The World</h3>
-                <p className="text-white/80 leading-relaxed">
+                <p className="text-slate-900/95 leading-relaxed">
                   The world is pretty much 1:1 with real life — except Charlie
                   and co are effectively cartoon characters, and there&apos;s
                   loads of paranormal, magic, and high-tech shenanigans. Being
@@ -425,21 +429,6 @@ export default function HomePage() {
             </div>
 
             <div className="relative">
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {CHARACTERS.map((char) => (
-                  <div key={char.name} className="glass-card overflow-hidden rounded-3xl p-3 text-center">
-                    <img
-                      src={withBasePath(char.portraitSrc)}
-                      alt={`${char.name} portrait`}
-                      className="w-full h-auto rounded-3xl object-cover"
-                    />
-                    <div className="mt-3">
-                      <p className="text-white font-semibold">{char.name}</p>
-                      <p className="text-xs text-white/60">{char.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
               <div className="glass-card overflow-hidden rounded-2xl">
                 <img
                   src={withBasePath("/images/corkscrew/ss1.jpg")}
@@ -621,16 +610,20 @@ function SectionHeader({ tag, title, subtitle }: { tag: string; title: string; s
 
 function CharacterCard({ character }: { character: Character }) {
   return (
-    <div className={`character-card ${character.colorClass} p-8`}>
-      <div className={`w-16 h-16 rounded-2xl ${character.iconBg} flex items-center justify-center mb-5`}>
-        <character.icon size={30} className={character.iconColor} />
+    <div className={`character-card ${character.colorClass} p-8`}> 
+      <div className="relative overflow-hidden rounded-3xl mb-6">
+        <img
+          src={withBasePath(character.portraitSrc)}
+          alt={`${character.name} portrait`}
+          className="w-full h-56 object-cover"
+        />
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+          <p className="text-sm text-white/80 uppercase tracking-[0.2em]">{character.role}</p>
+          <h3 className="text-2xl font-black text-white mt-1">{character.name}</h3>
+        </div>
       </div>
       <div className="mb-4">
-        <h3 className="text-2xl font-black text-white">{character.name}</h3>
-        {character.nickname && <p className="text-white/40 text-sm italic">{character.nickname}</p>}
-        <p className={`text-sm font-semibold bg-gradient-to-r ${character.gradientFrom} ${character.gradientTo} bg-clip-text text-transparent mt-1`}>
-          {character.role}
-        </p>
+        {character.nickname && <p className="text-white/40 text-sm italic mb-2">{character.nickname}</p>}
       </div>
       <p className="text-white/70 text-sm leading-relaxed mb-5">{character.description}</p>
       <div className="flex flex-wrap gap-2">

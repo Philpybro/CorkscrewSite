@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "CharlieDoesStuff" }],
   icons: {
-    icon: `${basePath}/images/corkscrew/logo.png`,
+    icon: `${basePath}/images/corkscrew/icon.png`,
   },
   openGraph: {
     title: "Corkscrew - The Ultimate Momentum-Based Adventure",
