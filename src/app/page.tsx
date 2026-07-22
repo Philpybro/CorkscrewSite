@@ -23,8 +23,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const BASE_PATH = "/CorkscrewSite";
-const withBasePath = (path: string) => `${BASE_PATH}${path}`;
+const withBasePath = (path: string) => path;
 
 /* ═══════════════════════════════════════════
    DATA
